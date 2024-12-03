@@ -8,9 +8,8 @@ import django.dispatch
 
 logger = logging.getLogger(__name__)
 
-# Remove `providing_args` from the Signal constructor
-connect = django.dispatch.Signal()
-message = django.dispatch.Signal()
+connect = django.dispatch.Signal(providing_args=["userdata", "flags", "rc"])
+message = django.dispatch.Signal(providing_args=["userdata", "msg"])
 
 
 def topic(matcher, as_json=True, **extras):
